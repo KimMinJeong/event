@@ -39,16 +39,16 @@ public class DatabaseConfiguration {
 
     //MyBatis 연동하기
     //classpath:src/main/resources
-    @Bean
-    public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
-        SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
-        sqlSessionFactoryBean.setDataSource(dataSource);
-        sqlSessionFactoryBean.setMapperLocations(applicationContext.getResources("classpath:/mapper/**/*.xml"));
-        return sqlSessionFactoryBean.getObject();
-    }
+    //@Bean
+    //public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
+    //   SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
+    //    sqlSessionFactoryBean.setDataSource(dataSource);
+    //    sqlSessionFactoryBean.setMapperLocations(applicationContext.getResources("classpath:/mapper/**/*.xml"));
+    //    return sqlSessionFactoryBean.getObject();
+    //}
 
-    @Bean
-    public SqlSessionTemplate sqlSessionTemplate(SqlSessionFactory sqlSessionFactory) {
-        return new SqlSessionTemplate(sqlSessionFactory);
-    }
+    //@Bean
+    //public SqlSessionTemplate sqlSessionTemplate(SqlSessionFactory sqlSessionFactory) {
+    //    return new SqlSessionTemplate(sqlSessionFactory);
+    //}
 }

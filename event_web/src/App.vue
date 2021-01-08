@@ -1,23 +1,36 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+      <router-view v-if="!isMobile"/>
+      <router-view v-else name="mobile"/>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  data: () => ({
+    isMobile: false
+  }),
+
+  beforeDestroy () {
+    if (typeof window !== 'undefined') {
+      window.removeEventListener('resize', this.onResize, { passive: true })
+    }
+  },
+
+  mounted () {
+    this.onResize()
+    window.addEventListener('resize', this.onResize, { passive: true })
+  },
+
+  methods: {
+    onResize () {
+      this.isMobile = window.innerWidth < 600
+    }
+  }
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
