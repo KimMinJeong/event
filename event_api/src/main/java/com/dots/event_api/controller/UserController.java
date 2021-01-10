@@ -71,7 +71,7 @@ public class UserController {
                 result.put("result_msg", "이름을 입력해주세요.");
             }else if(phoneNo.equals("") || phoneNo.equals(null)){
                 result.put("result_code", HttpStatus.NO_CONTENT);
-                result.put("result_msg", "휴대전화를 입력해주세요.");
+                result.put("result_msg", "휴대폰번호를 입력해주세요.");
             }else {
                 userService.register(userName,
                         phoneNo,
