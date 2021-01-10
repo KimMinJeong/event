@@ -3,10 +3,7 @@ package com.dots.event_api.dao.domain;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -16,10 +13,18 @@ public class TbUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userSn;
+
+    @Column(nullable = false)
     private String userName;
-    private String email;
+
+    @Column(nullable = false)
     private String phoneNo;
+
+    private String email;
+
+    @Column(nullable = false)
     private String regDt;
+
     private String updDt;
 
     public TbUser() { }

@@ -4,10 +4,14 @@ import com.dots.event_api.dao.domain.TbUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<TbUser, Long> {
 
     public Optional<TbUser> findByUserSn(Long userSn);
+
+    public List<TbUser> findAllByUserNameAndPhoneNo(String userName, String phoneNo);
+
 }
