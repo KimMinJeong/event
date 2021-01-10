@@ -44,13 +44,14 @@ public class UserController {
         return null;
     }
 
-    //등록
+    //신청하기
     @PostMapping
     private String register(HttpServletRequest request, HttpServletResponse response) {
 
         String userName = request.getParameter("userName");
         String phoneNo = request.getParameter("phoneNo");
         String email = request.getParameter("email");
+        String seminarYn = request.getParameter("seminarYn");
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date time = new Date();
@@ -63,7 +64,7 @@ public class UserController {
 
         if(count>0) {
             result.put("result_code", HttpStatus.TOO_MANY_REQUESTS);
-            result.put("result_msg", "이미 등록하였습니다.");
+            result.put("result_msg", "이미 신청하였습니다.");
         }else{
             if(userName.equals("") || userName.equals(null)){
                 result.put("result_code", HttpStatus.NO_CONTENT);
@@ -75,10 +76,11 @@ public class UserController {
                 userService.register(userName,
                         phoneNo,
                         email,
+                        seminarYn,
                         nowTime);
 
                 result.put("result_code", HttpStatus.OK);
-                result.put("result_msg", "등록완료되었습니다.");
+                result.put("result_msg", "신청완료되었습니다.");
             }
         }
 

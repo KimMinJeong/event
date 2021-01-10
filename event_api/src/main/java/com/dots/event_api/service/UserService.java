@@ -14,12 +14,13 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public TbUser register(String userName, String phoneNo, String email, String nowTime) {
+    public TbUser register(String userName, String phoneNo, String email, String seminarYn, String nowTime) {
 
         TbUser user = new TbUser();
         user.setUserName(userName);
         user.setPhoneNo(phoneNo);
         user.setEmail(email);
+        user.setSeminarYn(seminarYn);
         user.setRegDt(nowTime);
         user.setUpdDt(nowTime);
 

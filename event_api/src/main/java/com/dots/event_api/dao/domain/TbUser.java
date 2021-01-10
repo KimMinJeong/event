@@ -2,6 +2,7 @@ package com.dots.event_api.dao.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 
@@ -22,6 +23,9 @@ public class TbUser {
 
     private String email;
 
+    @ColumnDefault("N") //default N
+    private String seminarYn;
+
     @Column(nullable = false)
     private String regDt;
 
@@ -29,12 +33,13 @@ public class TbUser {
 
     public TbUser() { }
 
-    public TbUser(String userName, String email, String phoneNo) {}
+    public TbUser(String userName, String phoneNo, String email, String seminar_yn) {}
 
-    public TbUser(String userName, String email, String phoneNo, String regDt, String updDt) {
+    public TbUser(String userName, String phoneNo, String email, String seminar_yn, String regDt, String updDt) {
         this.userName = userName;
-        this.email = email;
         this.phoneNo = phoneNo;
+        this.email = email;
+        this.seminarYn = seminar_yn;
         this.regDt = regDt;
         this.updDt = updDt;
     }
