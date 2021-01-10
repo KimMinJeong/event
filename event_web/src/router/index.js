@@ -1,24 +1,21 @@
 import Vue from 'vue'
-import Router from 'vue-router'
-import Index from '../components/web/Index'
-import IndexM from '../components/mobile/Index'
+import VueRouter from 'vue-router'
+import Event from '@/components/user/Event'
+import PageNotFound from '@/components/PageNotFound'
 
-Vue.use(Router)
-const  routes = [
-  {
-    path: '/',
-    name: 'Root',
-    component: {
-      default: Index,
-      mobile: IndexM
+Vue.use(VueRouter)
+
+export default new VueRouter({
+  mode: "history",
+  routes: [
+    {
+      path: "/",
+      name: "Event",
+      component: Event
+    },
+    {
+      path: "*",
+      component: PageNotFound
     }
-  }
-]
-
-const router = new Router({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
-})
-
-export default router
+  ]
+});
